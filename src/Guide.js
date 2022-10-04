@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
+import {GUIDE_LIMIT_KEY} from './constant';
 import { getDom, getArrowPosition, scrollToTarget, getPosition, getMaskStyle} from './utils';
+import {getLocal, setLocal} from './local';
 import cssStyles from './guide.less';
 
 const Test = props => {
@@ -76,11 +78,16 @@ guide.createDom = id => {
     document.body.appendChild(dom);
 };
 guide.init = params => {
-    // eslint-disable-next-line no-console
+    const key = getLocal(GUIDE_LIMIT_KEY);
+
+    if (key) {
+        return;
+    }
     guide.params = params || {};
     guide.createDom('guid');
     // 造一个节点dom
     guide.render('guid');
+    setLocal(GUIDE_LIMIT_KEY, true);
 };
 
 export default guide;
