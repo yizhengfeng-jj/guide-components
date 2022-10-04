@@ -1,0 +1,29 @@
+{
+  "name": "guid-components",
+  "version": "1.0.1",
+  "description": "新手引导组件",
+  "main": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "^8.2.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.3",
+    "@babel/preset-react": "^7.18.6",
+    "css-loader": "^2.1.0",
+    "less": "^4.1.3",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^4.2.3"
+  }
+}
