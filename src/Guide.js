@@ -25,6 +25,12 @@ const Test = props => {
 
         const {el, placement } = start || {};
         const targetDom = getDom(el);
+        if (!targetDom) {
+            complete();
+            setLocal(GUIDE_LIMIT_KEY, '');
+            console.error('请检查每一步的元素是否存在');
+            return;
+        }
         const styles = getMaskStyle(targetDom);
         const modalStyle = getPosition(targetDom, modalRef.current, placement);
         const arrowStyle = getArrowPosition(modalRef.current, placement);
@@ -47,6 +53,7 @@ const Test = props => {
         const guid = document.getElementById(id);
 
         guid.parentNode.removeChild(guid);
+        setLocal(GUIDE_LIMIT_KEY, true);
     }, [id]);
 
     return <>
@@ -87,7 +94,6 @@ guide.init = params => {
     guide.createDom('guid');
     // 造一个节点dom
     guide.render('guid');
-    setLocal(GUIDE_LIMIT_KEY, true);
 };
 
 export default guide;
